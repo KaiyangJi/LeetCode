@@ -51,14 +51,39 @@ nums2.length == n
 
     // 方法1
 
-    var nums = nums1.concat(nums2).sort((a,b) => {return a-b});
-    var len = nums.length;
+    // var nums = nums1.concat(nums2).sort((a,b) => {return a-b});
+    // var len = nums.length;
+    // var result;
+
+    // if (len % 2 !== 0) {
+    //     result = nums[Math.floor(len / 2)] || 0;
+    // } else {
+    //     result = (nums[len / 2] + nums [len / 2 - 1]) / 2;
+    // }
+
+    // return result.toFixed(5)
+
+
+    var nums = [], len1 = nums1.length, len2 = nums2.length, i = 0, j = 0, len = len1 + len2;
     var result;
+    while(i < len1 || j < len2) {
+        
+        if (nums1[i] <= nums2[j] || j === len2  ) {
+            nums.push(nums1[i])
+            i++;
+        } else {
+            nums.push(nums2[j]);
+            j++
+        } 
+    }
+
+    console.log('nums', nums)
+
 
     if (len % 2 !== 0) {
         result = nums[Math.floor(len / 2)] || 0;
     } else {
-        result = (nums[len / 2] + nums [len / 2 - 1]) / 2;
+        result = ((nums[len / 2] || 0) + (nums [len / 2 - 1] || 0)) / 2;
     }
 
     return result.toFixed(5)
